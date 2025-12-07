@@ -37,7 +37,7 @@ from .handlers import (
     YouTubeChannelHandlerJson
 )
 
-from utils.dateutils import DateUtils
+from webtoolkitex.utils.dateutils import DateUtils
 
 
 class UrlEx(BaseUrl):

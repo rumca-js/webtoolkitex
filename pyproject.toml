@@ -3,7 +3,7 @@
 
 [tool.poetry]
 name = "webtoolkitex"
-version = "0.0.133"
+version = "0.0.1"
 description = "Web tools and interfaces for Internet data processing."
 authors = ["Iwan Grozny <renegat@renegat0x0.ddns.net>"]
 license = "GPL3"

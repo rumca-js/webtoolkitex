@@ -11,9 +11,9 @@ from urllib.parse import urlparse
 from urllib.parse import parse_qs
 from concurrent.futures import ThreadPoolExecutor
 
-from utils.dateutils import DateUtils
-from utils.serializers import YouTubeJson
-from utils.programwrappers import ytdlp
+from webtoolkitex.utils.dateutils import DateUtils
+from webtoolkitex.utils.serializers import YouTubeJson
+from webtoolkitex.utils.programwrappers import ytdlp
 
 from webtoolkit import PageResponseObject, UrlLocation, HtmlPage, ContentInterface
 from webtoolkit import WebLogger
