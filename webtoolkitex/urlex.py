@@ -50,7 +50,7 @@ class UrlEx(BaseUrl):
         Constructor. Pass url_builder, if any subsequent calls will be created using this builder.
         """
         if not url_builder:
-            url_builder = Url
+            url_builder = UrlEx
 
         super().__init__(url=url, request=request, url_builder=url_builder)
 

@@ -8,6 +8,10 @@ from webtoolkitex import (
 )
 
 
+def print_bar():
+    print("------------------------")
+
+
 def run_with_base_url(test_url):
     print("Running {} with UrlEx".format(test_url))
 
@@ -109,7 +113,6 @@ def main():
     test_baseurl__reddit__channel()
     test_baseurl__reddit__news()
 
-    test_baseurl__remote_url()
     test_baseurl__is_allowed()
 
 

@@ -41,17 +41,9 @@ class WebConfig(object):
     def get_crawlers_raw():
         crawlers = [
             RequestsCrawler,
-            SeleniumChromeHeadless,  # requires driver location
-            SeleniumChromeFull,  # requires driver location
-            SeleniumUndetected,  # requires driver location
-            SeleniumBase,
-            SeleniumWireFull,
             StealthRequestsCrawler,
             CurlCffiCrawler,
             HttpxCrawler,
-            CrawleeBeautifulScript,
-            CrawleePlaywrightScript,
-            ScrapyScript,
             YtdlpCrawler,
             HttpMorphCrawler,
         ]

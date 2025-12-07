@@ -18,6 +18,7 @@ from webtoolkit import (
     HTTP_STATUS_CODE_PAGE_UNSUPPORTED,
     HTTP_STATUS_CODE_SERVER_ERROR,
 )
+from webtoolkitex.utils.programwrappers import ytdlp
 
 
 class YtdlpCrawler(CrawlerInterface):
@@ -29,7 +30,6 @@ class YtdlpCrawler(CrawlerInterface):
         """
         Run crawler
         """
-        from utils.programwrappers import ytdlp
 
         self.response = PageResponseObject(
             self.request.url,
