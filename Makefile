@@ -1,6 +1,6 @@
 .PHONY: test
 
-test: test-unit test-man
+test: test-unit test-real
 test-unit:
 	poetry run python -m unittest discover -v 2>&1 | tee test_output.txt
 test-real:
