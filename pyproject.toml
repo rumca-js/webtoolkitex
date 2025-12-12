@@ -3,7 +3,7 @@
 
 [tool.poetry]
 name = "webtoolkitex"
-version = "0.0.2"
+version = "0.0.4"
 description = "Web tools and interfaces for Internet data processing."
 authors = ["Iwan Grozny <renegat@renegat0x0.ddns.net>"]
 license = "GPL3"
@@ -20,7 +20,7 @@ pytz = "^2024.2"
 psutil="*"
 flask="*"
 url-cleaner="*"
-webtoolkit="^0.0.147"
+webtoolkit="^0.0.151"
 stealth-requests = "^2.0.4"
 
 [tool.poetry.group.dev.dependencies]
