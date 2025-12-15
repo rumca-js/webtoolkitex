@@ -246,6 +246,8 @@ class YouTubeJsonHandler(YouTubeVideoHandler):
 
         try:
             view_count = int(self.yt_ob.get_view_count())
+        except TypeError as E:
+            pass
         except ValueError as E:
             pass
         except AttributeError as E:
@@ -254,6 +256,8 @@ class YouTubeJsonHandler(YouTubeVideoHandler):
 
         try:
             thumbs_up = int(self.yt_ob.get_thumbs_up())
+        except TypeError as E:
+            pass
         except ValueError as E:
             pass
         except AttributeError as E:
@@ -262,6 +266,8 @@ class YouTubeJsonHandler(YouTubeVideoHandler):
 
         try:
             followers_count = int(self.yt_ob.get_followers_count())
+        except TypeError as E:
+            pass
         except ValueError as E:
             pass
         except AttributeError as E:
@@ -375,23 +381,23 @@ class YouTubeJsonHandler(YouTubeVideoHandler):
         return self.streams
 
     def get_response_yt_json(self):
-        if self.yt_text is not None:
-            return True
+        if self.yt_ob is not None:
+            return self.yt_ob
 
         url = self.get_yt_json_url()
         response = url.get_response()
         if response is None:
             WebLogger.debug("Url:{} No response".format(url.get_url()))
-            return False
+            return
 
         if not response.is_valid():
             WebLogger.debug("Url:{} response is not valid".format(url.get_url()))
-            return False
+            return
 
         self.yt_text = response.get_text()
         if not self.yt_text:
             WebLogger.debug("Url:{} response no text".format(url.get_url()))
-            return False
+            return
 
         return self.load_details_youtube()
 

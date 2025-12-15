@@ -82,10 +82,13 @@ class StealthRequestsCrawler(CrawlerInterface):
         import stealth_requests as requests
 
         try:
+            proxies = self.request.get_proxies_map()
+
             answer = requests.get(
                 self.request.url,
                 timeout=self.get_timeout_s(),
                 verify=self.request.ssl_verify,
+                proxies=proxies,
                 # stream=True,   # TODO does not work with it
             )
             return answer

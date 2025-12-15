@@ -90,11 +90,14 @@ class CurlCffiCrawler(CrawlerInterface):
         headers = self.get_request_headers()
 
         try:
+            proxies = self.request.get_proxies_map()
+
             answer = curl_cffi.get(
                 self.request.url,
                 timeout=self.get_timeout_s(),
                 verify=self.request.ssl_verify,
                 cookies=self.request.cookies,
+                proxy=proxies,
                 impersonate="chrome",
                 #headers=headers,
                 # stream=True, # TODO
