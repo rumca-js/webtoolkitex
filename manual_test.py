@@ -12,19 +12,24 @@ def print_bar():
     print("------------------------")
 
 
-def run_with_base_url(test_url):
-    print("Running {} with UrlEx".format(test_url))
+def run_with_base_url(test_url, request=None):
+    print("Running {} with UrlEx / request:{}".format(test_url, request))
 
-    url = UrlEx(url=test_url)
+    url = UrlEx(url=test_url, request=request)
     response = url.get_response()
     handler = url.get_handler()
 
     if response is None:
         print("Missing response!")
         return None, None
+
     if response.is_invalid():
         print("Invalid response")
         return None, None
+
+    if response.is_valid():
+        print("Response is valid")
+
     if response.get_text() is None:
         print("No text in response")
         return None, None
@@ -38,6 +43,8 @@ def run_with_base_url(test_url):
 
     if not handler.get_body_hash():
         print("No body hash")
+
+    print("Response request: {}".format(response.request))
 
     entries_len = len(list(handler.get_entries()))
     print(f"Entries: {entries_len}")
@@ -91,6 +98,11 @@ def test_baseurl__reddit__news():
     test_url = "https://www.reddit.com/r/wizardposting/comments/1olomjs/screw_human_skeletons_im_gonna_get_more_creative/"
     return run_with_base_url(test_url)
 
+def test_crawler(test_link, crawler_name=None):
+    request = UrlEx(test_link).get_request_for_url(test_link)
+    request.crawler_name = crawler_name
+    return run_with_base_url(test_link, request=request)
+
 
 def test_baseurl__is_allowed():
     test_url = "https://www.youtube.com/watch?v=Vzgimftolys&pp=ygUPbGludXMgdGVjaCB0aXBz"
@@ -119,6 +131,13 @@ def main():
     test_baseurl__reddit__news()
     print_bar()
     test_baseurl__is_allowed()
+    print_bar()
+
+    test_crawler("https://google.com", "RequestsCrawler")
+    print_bar()
+    test_crawler("https://google.com", "HttpxCrawler")
+    print_bar()
+    test_crawler("https://google.com", "StealthRequestsCrawler")
     print_bar()
 
 
