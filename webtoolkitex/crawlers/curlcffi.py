@@ -23,15 +23,16 @@ class CurlCffiCrawler(CrawlerInterface):
         """
         Run crawler
         """
-        if not self.is_valid():
-            return
-
         self.response = PageResponseObject(
             self.request.url,
             text=None,
             status_code=HTTP_STATUS_CODE_SERVER_ERROR,
             request_url=self.request.url,
         )
+
+        if not self.is_valid():
+            self.response.add_error("Crawler is not valid")
+            return self.response
 
         answer = self.build_requests()
 
@@ -129,5 +130,7 @@ class CurlCffiCrawler(CrawlerInterface):
 
             return True
         except Exception as E:
+            if self.response:
+                self.response.add_error(str(E))
             print(str(E))
             return False

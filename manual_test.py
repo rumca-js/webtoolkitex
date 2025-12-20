@@ -72,6 +72,7 @@ def test_baseurl__youtube_video():
 def test_baseurl__youtube_channel():
     test_url = "https://www.youtube.com/@LinusTechTips"
     response, handler = run_with_base_url(test_url)
+    print("Title: {}".format(handler.get_title()))
 
 
 def test_baseurl__odysee_channel():
