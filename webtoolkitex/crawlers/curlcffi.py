@@ -100,6 +100,7 @@ class CurlCffiCrawler(CrawlerInterface):
                 cookies=self.request.cookies,
                 proxy=proxies,
                 impersonate="chrome",
+
                 #headers=headers,
                 # stream=True, # TODO
             )

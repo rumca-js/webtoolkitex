@@ -17,6 +17,7 @@ import base64
 from webtoolkit import (
     WebLogger,
     HttpPageHandler,
+    UrlLocation,
     BaseUrl,
     OdyseeVideoHandler,
     OdyseeChannelHandler,
@@ -40,6 +41,19 @@ from .handlers import (
 from webtoolkitex.utils.dateutils import DateUtils
 
 
+class EntryRules(object):
+    def get_default_request(url):
+        default_request = WebConfig.get_default_request(url)
+
+        location = UrlLocation(url)
+        domain_only = location.get_domain_only()
+        if domain_only.find("youtube.com") >= 0:
+            default_request.crawler_name = "RequestsCrawler"
+            default_request.crawler_type = None
+
+        return default_request
+
+
 class UrlEx(BaseUrl):
     """
     Represents network location
@@ -54,7 +68,7 @@ class UrlEx(BaseUrl):
 
         super().__init__(url=url, request=request, url_builder=url_builder)
 
-        if not self.request.crawler_type:
+        if self.request.crawler_name and not self.request.crawler_type:
             crawler = WebConfig.get_crawler_from_string(self.request.crawler_name)
             if not crawler:
                 WebLogger.error(f"Could not find crawler {crawler}")
@@ -66,7 +80,15 @@ class UrlEx(BaseUrl):
         """
         Returns request for URL
         """
-        return WebConfig.get_default_request(url)
+        return EntryRules.get_default_request(url)
+
+    def get_init_request(self):
+        """
+        Returns initial request. TODO seems redundant
+        """
+        request =  EntryRules.get_default_request(url)(self.url)
+        request = self.get_request_for_request(request) 
+        return request
 
     def get_request_for_request(self, request):
         """
@@ -75,18 +97,10 @@ class UrlEx(BaseUrl):
         if request.crawler_name and request.crawler_type is None:
             crawler = WebConfig.get_crawler_from_string(self.request.crawler_name)
             self.request.crawler_type = crawler(request.url)
-        else:
+        if request.crawler_name is None and request.crawler_type is None:
             default_request = WebConfig.get_default_request(request.url)
             request.crawler_name = default_request.crawler_name
             request.crawler_type = default_request.crawler_type
-        return request
-
-    def get_init_request(self):
-        """
-        Returns initial request. TODO seems redundant
-        """
-        request = WebConfig.get_default_request(self.url)
-        request = self.get_request_for_request(request) 
         return request
 
     def get_handlers(self):

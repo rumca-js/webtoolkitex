@@ -142,7 +142,7 @@ class WebConfig(object):
         WebLogger.web_logger = Logger
 
     def use_print_logging():
-        from utils.logger import PrintLogger
+        from .utils.logger import PrintLogger
 
         WebLogger.web_logger = PrintLogger()
 

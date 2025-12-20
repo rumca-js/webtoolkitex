@@ -1017,13 +1017,13 @@ zstd = ["backports-zstd (>=1.0.0)"]
 
 [[package]]
 name = "webtoolkit"
-version = "0.0.159"
+version = "0.0.166"
 description = "Web tools and interfaces for Internet data processing."
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "webtoolkit-0.0.159-py3-none-any.whl", hash = "sha256:fe0e32ce18451fb6725496dbcbf3b9d9f9485619a84ba1fa2f61d1ee9664f159"},
-    {file = "webtoolkit-0.0.159.tar.gz", hash = "sha256:337a7d67615fe2f9888021d7215261ac8af9eb515fd4625d2105774b7164ee17"},
+    {file = "webtoolkit-0.0.166-py3-none-any.whl", hash = "sha256:dd4ee511c5f073205a03456792295e6645d21e1581450ec65c86159fc6521abd"},
+    {file = "webtoolkit-0.0.166.tar.gz", hash = "sha256:81d8aa1abfe079b38c36bc347fb129dfc8577544e66a6d0ad18a4161aa9775da"},
 ]
 
 [package.dependencies]
@@ -1079,4 +1079,4 @@ test = ["pytest (>=8.1,<9.0)", "pytest-rerunfailures (>=14.0,<15.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "8f65556589ec422b484b2dff288ef8d6c228e660ddba4c3c719e333d1859307d"
+content-hash = "203e920bf4e6bb479eb333f53728fe2f92a2c8dd17ad384b6be6d4ef411d607f"
