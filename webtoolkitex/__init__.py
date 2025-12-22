@@ -5,7 +5,7 @@ Similar project: https://pypi.org/project/abstract-webtools/
 from .urlex import UrlEx
 
 from .handlers import (
-    YouTubeJsonHandler,
+    YouTubeVideoHandlerJson,
     YouTubeChannelHandlerJson,
 )
 

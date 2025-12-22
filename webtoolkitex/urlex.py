@@ -34,7 +34,7 @@ from webtoolkit import (
 
 from .webconfig import WebConfig
 from .handlers import (
-    YouTubeJsonHandler,
+    YouTubeVideoHandlerJson,
     YouTubeChannelHandlerJson
 )
 
@@ -109,7 +109,7 @@ class UrlEx(BaseUrl):
         """
         #fmt off
         return [
-            YouTubeJsonHandler,
+            YouTubeVideoHandlerJson,
             YouTubeChannelHandlerJson,
             OdyseeVideoHandler,
             OdyseeChannelHandler,

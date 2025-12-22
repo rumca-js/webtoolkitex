@@ -49,6 +49,8 @@ class TestBaseUrl(unittest.TestCase):
         test_url = "https://www.google.com"
         response,handler = self.run_with_base_url(test_url)
 
+        self.assertEqual(handler.__class__.__name__, "HttpPageHandler")
+
         entries_len = len(list(handler.get_entries()))
         streams_len = len(list(handler.get_streams()))
 
@@ -63,6 +65,8 @@ class TestBaseUrl(unittest.TestCase):
         test_url = "https://www.youtube.com/watch?v=9yanqmc01ck"
         response, handler = self.run_with_base_url(test_url)
 
+        self.assertEqual(handler.__class__.__name__, "YouTubeVideoHandlerJson")
+
         entries_len = len(list(handler.get_entries()))
         streams_len = len(list(handler.get_streams()))
 
@@ -71,18 +75,35 @@ class TestBaseUrl(unittest.TestCase):
         self.assertTrue("Streams_len", streams_len == 2)
         self.assertTrue("Entries_len", entries_len == 0)
 
-    def test_baseurl__youtube_channel__name(self):
-        test_url = "https://www.youtube.com/@LinusTechTips"
+    def test_baseurl__youtube_channel__id(self):
+        test_url = "https://www.youtube.com/channel/UCXuqSBlHAE6Xw-yeJA0Tunw"
         response, handler = self.run_with_base_url(test_url)
+
+        self.assertEqual(handler.__class__.__name__, "YouTubeChannelHandlerJson")
 
         entries_len = len(list(handler.get_entries()))
         streams_len = len(list(handler.get_streams()))
-
-        self.assertTrue("Response is valid", response.is_valid())
         self.assertTrue("Title", handler.get_title() == "Linus Tech Tips")
         self.assertTrue("Streams_len", streams_len == 1)
         self.assertTrue("Entries_len", entries_len == 0)
         self.assertTrue("Feeds_len", len(handler.get_feeds()) == 1)
+
+        self.assertTrue("Response is valid", response.is_valid())
+
+    def test_baseurl__youtube_channel__name(self):
+        test_url = "https://www.youtube.com/@LinusTechTips"
+        response, handler = self.run_with_base_url(test_url)
+
+        self.assertEqual(handler.__class__.__name__, "YouTubeChannelHandlerJson")
+
+        entries_len = len(list(handler.get_entries()))
+        streams_len = len(list(handler.get_streams()))
+        self.assertTrue("Title", handler.get_title() == "Linus Tech Tips")
+        self.assertTrue("Streams_len", streams_len == 1)
+        self.assertTrue("Entries_len", entries_len == 0)
+        self.assertTrue("Feeds_len", len(handler.get_feeds()) == 1)
+
+        self.assertTrue("Response is valid", response.is_valid())
 
         #response, handler = self.run_with_base_url(test_url, handler_name="HttpPageHandler")
 
@@ -118,6 +139,8 @@ class TestBaseUrl(unittest.TestCase):
         test_url = "https://odysee.com/$/rss/@BrodieRobertson:5"
         response, handler = self.run_with_base_url(test_url)
 
+        self.assertEqual(handler.__class__.__name__, "OdyseeChannelHandler")
+
         entries_len = len(list(handler.get_entries()))
         streams_len = len(list(handler.get_streams()))
         self.assertTrue("Streams_len", streams_len == 1)
@@ -126,6 +149,8 @@ class TestBaseUrl(unittest.TestCase):
     def test_baseurl__odysee_video(self):
         test_url = "https://odysee.com/servo-browser-finally-hits-a-major:24fc604b8d282b226091928dda97eb0099ab2f05"
         response, handler = self.run_with_base_url(test_url)
+
+        self.assertEqual(handler.__class__.__name__, "OdyseeVideoHandler")
 
         entries_len = len(list(handler.get_entries()))
         streams_len = len(list(handler.get_streams()))
@@ -136,6 +161,8 @@ class TestBaseUrl(unittest.TestCase):
         test_url = "https://github.com/rumca-js/crawler-buddy"
         response, handler = self.run_with_base_url(test_url)
 
+        self.assertEqual(handler.__class__.__name__, "GitHubUrlHandler")
+
         entries_len = len(list(handler.get_entries()))
         streams_len = len(list(handler.get_streams()))
         self.assertTrue("Streams_len", streams_len == 1)
@@ -145,6 +172,8 @@ class TestBaseUrl(unittest.TestCase):
         test_url = "https://www.reddit.com/r/wizardposting"
         response, handler = self.run_with_base_url(test_url)
 
+        self.assertEqual(handler.__class__.__name__, "RedditUrlHandler")
+
         entries_len = len(list(handler.get_entries()))
         streams_len = len(list(handler.get_streams()))
         self.assertTrue("Streams_len", streams_len == 1)
@@ -153,6 +182,8 @@ class TestBaseUrl(unittest.TestCase):
     def test_baseurl__reddit__news(self):
         test_url = "https://www.reddit.com/r/wizardposting/comments/1olomjs/screw_human_skeletons_im_gonna_get_more_creative/"
         response, handler = self.run_with_base_url(test_url)
+
+        self.assertEqual(handler.__class__.__name__, "RedditUrlHandler")
 
         entries_len = len(list(handler.get_entries()))
         streams_len = len(list(handler.get_streams()))
