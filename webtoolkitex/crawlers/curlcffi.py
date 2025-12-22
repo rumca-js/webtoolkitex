@@ -89,13 +89,14 @@ class CurlCffiCrawler(CrawlerInterface):
         from curl_cffi.requests.exceptions import ConnectionError
 
         headers = self.get_request_headers()
+        self.update_request()
 
         try:
             proxies = self.request.get_proxies_map()
 
             answer = curl_cffi.get(
                 self.request.url,
-                timeout=self.get_timeout_s(),
+                timeout=self.request.timeout_s,
                 verify=self.request.ssl_verify,
                 cookies=self.request.cookies,
                 proxy=proxies,
@@ -121,6 +122,9 @@ class CurlCffiCrawler(CrawlerInterface):
                 request_url=self.request.url,
             )
             self.response.add_error("Url:{} Cannot create request".format(str(E)))
+
+    def update_request(self):
+        self.request.timeout_s = self.get_timeout_s()
 
     def is_valid(self) -> bool:
         """

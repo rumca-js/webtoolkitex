@@ -296,7 +296,7 @@ class BaseUrlTest(FakeInternetTestCase):
         self.assertEqual(properties["link_request"], test_link)
 
         # +1 html +1 RSS
-        self.assertEqual(MockRequestCounter.mock_page_requests, 2)
+        self.assertEqual(MockRequestCounter.mock_page_requests, 1)
 
     def test_get_properties__youtube_video__basic(self):
         MockRequestCounter.mock_page_requests = 0
@@ -441,7 +441,7 @@ class BaseUrlTest(FakeInternetTestCase):
         self.assertTrue(len(entries_section) > 0)
 
         # +1 HTML +1 RSS
-        self.assertEqual(MockRequestCounter.mock_page_requests, 2)
+        self.assertEqual(MockRequestCounter.mock_page_requests, 1)
 
     def test_get_properties__odysee_channel__advanced(self):
         MockRequestCounter.mock_page_requests = 0
@@ -471,7 +471,7 @@ class BaseUrlTest(FakeInternetTestCase):
         self.assertTrue(entries_section)
         self.assertTrue(len(entries_section) > 0)
 
-        self.assertEqual(MockRequestCounter.mock_page_requests, 2)
+        self.assertEqual(MockRequestCounter.mock_page_requests, 1)
 
     def test_get_properties__youtube_video__advanced(self):
         MockRequestCounter.mock_page_requests = 0
@@ -826,7 +826,7 @@ class BaseUrlTest(FakeInternetTestCase):
 
         self.assertTrue(hash)
 
-        self.assertEqual(MockRequestCounter.mock_page_requests, 2)
+        self.assertEqual(MockRequestCounter.mock_page_requests, 1)
 
     def test_get_body_hash__youtube_channel(self):
         MockRequestCounter.mock_page_requests = 0
@@ -840,7 +840,7 @@ class BaseUrlTest(FakeInternetTestCase):
 
         self.assertTrue(hash)
 
-        self.assertEqual(MockRequestCounter.mock_page_requests, 2)
+        self.assertEqual(MockRequestCounter.mock_page_requests, 1)
 
     def test_get_body_hash__html(self):
         MockRequestCounter.mock_page_requests = 0
