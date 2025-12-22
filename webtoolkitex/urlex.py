@@ -59,7 +59,7 @@ class UrlEx(BaseUrl):
     Represents network location
     """
 
-    def __init__(self, url=None, settings=None, request=None, url_builder=None):
+    def __init__(self, url=None, request=None, url_builder=None):
         """
         Constructor. Pass url_builder, if any subsequent calls will be created using this builder.
         """
