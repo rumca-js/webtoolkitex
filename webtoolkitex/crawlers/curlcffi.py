@@ -90,6 +90,7 @@ class CurlCffiCrawler(CrawlerInterface):
 
         headers = self.get_request_headers()
         self.update_request()
+        impersonate = self.get_impersonate()
 
         try:
             proxies = self.request.get_proxies_map()
@@ -99,10 +100,10 @@ class CurlCffiCrawler(CrawlerInterface):
                 timeout=self.request.timeout_s,
                 verify=self.request.ssl_verify,
                 cookies=self.request.cookies,
+                headers=self.request.request_headers,
                 proxy=proxies,
-                impersonate="chrome",
+                impersonate=impersonate,
 
-                #headers=headers,
                 # stream=True, # TODO
             )
             return answer
@@ -125,6 +126,13 @@ class CurlCffiCrawler(CrawlerInterface):
 
     def update_request(self):
         self.request.timeout_s = self.get_timeout_s()
+
+    def get_impersonate(self):
+        impersonate = self.request.settings.get("impersonate")
+        if impersonate:
+            return impersonate
+
+        return "chrome"
 
     def is_valid(self) -> bool:
         """

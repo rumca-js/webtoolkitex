@@ -61,8 +61,6 @@ class TestBaseUrl(unittest.TestCase):
         self.assertTrue(streams_len == 1)
         self.assertTrue(entries_len == 0)
 
-        return response,handler
-
     def test_baseurl__youtube_video(self):
         test_url = "https://www.youtube.com/watch?v=9yanqmc01ck"
         response, handler, url = self.run_with_base_url(test_url)
@@ -110,35 +108,44 @@ class TestBaseUrl(unittest.TestCase):
 
         self.assertTrue(response.is_valid())
 
-        #response, handler = self.run_with_base_url(test_url, handler_name="HttpPageHandler")
+    def test_baseurl__youtube_channel__name__requests(self):
+        test_url = "https://www.youtube.com/@LinusTechTips"
+        request = PageRequestObject(test_url)
+        request.crawler_name="RequestsCrawler"
 
-        #entries_len = len(list(handler.get_entries()))
-        #streams_len = len(list(handler.get_streams()))
+        response, handler, url = self.run_with_base_url(test_url, request=request)
 
-        #self.assertTrue("Response is valid", response.is_valid())
-        #self.assertTrue("Title", handler.get_title() == "Linus Tech Tips")
-        #self.assertTrue("Streams_len", streams_len == 1)
-        #self.assertTrue("Entries_len", entries_len == 0)
+        self.assertEqual(handler.__class__.__name__, "YouTubeChannelHandlerJson")
+        self.assertEqual(response.request.crawler_type.__class__.__name__, "RequestsCrawler")
 
-        #response, handler = self.run_with_base_url(test_url, crawler_name="RequestsCrawler")
+        entries_len = len(list(handler.get_entries()))
+        streams_len = len(list(handler.get_streams()))
+        self.assertEqual(handler.get_title(), "Linus Tech Tips")
+        self.assertEqual(streams_len, 2)
+        self.assertTrue(entries_len > 0)
+        self.assertTrue(len(handler.get_feeds()) == 1)
 
-        #entries_len = len(list(handler.get_entries()))
-        #streams_len = len(list(handler.get_streams()))
+        self.assertTrue(response.is_valid())
 
-        #self.assertTrue("Response is valid", response.is_valid())
-        #self.assertTrue("Title", handler.get_title() == "Linus Tech Tips")
-        #self.assertTrue("Streams_len", streams_len == 1)
-        #self.assertTrue("Entries_len", entries_len == 0)
+    #def test_baseurl__youtube_channel__name__curl(self):
+    #    test_url = "https://www.youtube.com/@LinusTechTips"
+    #    request = PageRequestObject(test_url)
+    #    request.crawler_name="CurlCffiCrawler"
+    #    request.settings={"impersonate" : "firefox"}
 
-        #response, handler = self.run_with_base_url(test_url, crawler_name="CurlCffiCrawler")
+    #    response, handler, url = self.run_with_base_url(test_url, request=request)
 
-        #entries_len = len(list(handler.get_entries()))
-        #streams_len = len(list(handler.get_streams()))
+    #    self.assertEqual(handler.__class__.__name__, "YouTubeChannelHandlerJson")
+    #    self.assertEqual(response.request.crawler_type.__class__.__name__, "CurlCffiCrawler")
 
-        #self.assertTrue("Response is valid", response.is_valid())
-        #self.assertTrue("Title", handler.get_title() == "Linus Tech Tips")
-        #self.assertTrue("Streams_len", streams_len == 1)
-        #self.assertTrue("Entries_len", entries_len == 0)
+    #    entries_len = len(list(handler.get_entries()))
+    #    streams_len = len(list(handler.get_streams()))
+    #    self.assertEqual(handler.get_title(), "Linus Tech Tips")
+    #    self.assertEqual(streams_len, 2)
+    #    self.assertTrue(entries_len > 0)
+    #    self.assertTrue(len(handler.get_feeds()) == 1)
+
+    #    self.assertTrue(response.is_valid())
 
     def test_baseurl__odysee_channel(self):
         test_url = "https://odysee.com/$/rss/@BrodieRobertson:5"
