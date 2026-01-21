@@ -93,6 +93,8 @@ class CurlCffiCrawler(CrawlerInterface):
         impersonate = self.get_impersonate()
 
         try:
+            print(headers)
+            print(impersonate)
             proxies = self.request.get_proxies_map()
 
             answer = curl_cffi.get(
@@ -100,7 +102,7 @@ class CurlCffiCrawler(CrawlerInterface):
                 timeout=self.request.timeout_s,
                 verify=self.request.ssl_verify,
                 cookies=self.request.cookies,
-                headers=self.request.request_headers,
+                #headers=self.request.request_headers,
                 proxy=proxies,
                 impersonate=impersonate,
 

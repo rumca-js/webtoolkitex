@@ -427,6 +427,48 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "httpmorph"
+version = "0.2.8"
+description = "A Python HTTP client focused on mimicking browser fingerprints."
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "httpmorph-0.2.8-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:b02da2875c3ff623d32134082fe9f8a4fd27ef92e81c978cb17b330340197399"},
+    {file = "httpmorph-0.2.8-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:2f6e50dac50ee2b74190f9a33d19a7828ac6ad7011f7517dc933e79d76ed0886"},
+    {file = "httpmorph-0.2.8-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:95002c3648fc5631faa71b6483d9902eaa64fd468c23bf9e01058e95e14238d6"},
+    {file = "httpmorph-0.2.8-cp310-cp310-win_amd64.whl", hash = "sha256:14655cf28dfce9121b30402d412fcfe5306b9f799b38f73c1a06dfad057b340e"},
+    {file = "httpmorph-0.2.8-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:d43bfdec06c81bed222d87a758012d85cd73b5508b53588edf689f1024a5c3dd"},
+    {file = "httpmorph-0.2.8-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:ac8230be34848afc8f39d253c5e9dbcc38f109910c6d59a7ad99e1e26e2dad33"},
+    {file = "httpmorph-0.2.8-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:43a3b61eb29b8ef91a7f0a25b041def75a9ae4ec7caf86f2ea77c7cc49a08e88"},
+    {file = "httpmorph-0.2.8-cp311-cp311-win_amd64.whl", hash = "sha256:8c88482902ba399ef4e958a994c149b4362d1e66ce49c0fe53b909552a0fa1bb"},
+    {file = "httpmorph-0.2.8-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:f570cc3ca38986e1771b96c9d637c3bea2fcc0dede67f7ee7fc653686bb3b482"},
+    {file = "httpmorph-0.2.8-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:6bbab2c060b1795b30473279a1cf4d41ead8fb82c3c61029ad6d88bcc399118c"},
+    {file = "httpmorph-0.2.8-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a783b69b1c17b4a4c11bdfbcc6091cb52b803ea6b34f70a7b99db52bf69e1826"},
+    {file = "httpmorph-0.2.8-cp312-cp312-win_amd64.whl", hash = "sha256:9115c9a9ea4e11d6d1c167d372b54bb4f1cc6d4ec50b3e86338b220ffc12d8de"},
+    {file = "httpmorph-0.2.8-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:1f0c5ce2e6a542801bec4e14dc76be727aad5c70c0edc8e169f85d1b000e4820"},
+    {file = "httpmorph-0.2.8-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:e34110e3cf02b176d4227a6e9d17642aa9ac0d55f4561d1ed17b116c25d5f2cf"},
+    {file = "httpmorph-0.2.8-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:037544dc3da9b1eb2ecb25f75e5eafaa5567e6f40e61a628c1f83e6d7349063c"},
+    {file = "httpmorph-0.2.8-cp313-cp313-win_amd64.whl", hash = "sha256:3bc8b101c4d35609a16c17af9d7e7ea6953157f74604e840df02cf9969f3e5e7"},
+    {file = "httpmorph-0.2.8-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:bd96022ca74712abdecf84551b40dd5af81ec069f90a07206e4d842ba77018a1"},
+    {file = "httpmorph-0.2.8-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:b5a1ac7d6d1313309392be40a1f06995aae791eca6f1570705fa0fe5e1d8c2d8"},
+    {file = "httpmorph-0.2.8-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:45b1929749be0fc32b231c70da0ca9749f763f3024b8eb39b645244b42a6942c"},
+    {file = "httpmorph-0.2.8-cp314-cp314-win_amd64.whl", hash = "sha256:2100bd55fc862b6d5912c89d19f89b40350681b5a7304a28adce177b7bac6769"},
+    {file = "httpmorph-0.2.8-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:e9e54c1966032d31b1fa259f246b92de0da42be9d80ed47db3dc6be4c8e486e3"},
+    {file = "httpmorph-0.2.8-cp38-cp38-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:efba612cef897f7ec1515f407a54197448afbe2b384b1218d3496efcf022bfa1"},
+    {file = "httpmorph-0.2.8-cp38-cp38-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:ab3d8a59804cecf6d54531e41b144256e0b3fde4dcbc7d8c4e710ac0e44cbb44"},
+    {file = "httpmorph-0.2.8-cp38-cp38-win_amd64.whl", hash = "sha256:a09dc0e1c1d95a18e1aa94d49669d1d798fb438ffff4cb16dd50cdbb0627c423"},
+    {file = "httpmorph-0.2.8-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:28457d6da442118ec4c5ef7d1f5cb2b82be575e397d321250e1a844b6149cf09"},
+    {file = "httpmorph-0.2.8-cp39-cp39-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:87e8d99dc4e6b8bda0a1e5040ac27adb22d526e690675cdf9b64c6917c0a46db"},
+    {file = "httpmorph-0.2.8-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a4417b3dc5a92fd05a3ff2d2f672937f263a3bfdc14181eac65fdf696ae1e920"},
+    {file = "httpmorph-0.2.8-cp39-cp39-win_amd64.whl", hash = "sha256:38516df6c14f3af851208b9eaf9120bab35b50fecbe8a341f411ca616b6fd659"},
+]
+
+[package.extras]
+build = ["Cython (>=3.0)", "setuptools (>=68.0)", "wheel"]
+dev = ["cryptography (>=41.0)", "filelock (>=3.12.0)", "mypy (>=1.0)", "pytest (>=7.0)", "pytest-asyncio (>=0.21.0)", "pytest-benchmark (>=4.0)", "pytest-cov (>=4.0)", "ruff (>=0.7.0)"]
+
+[[package]]
 name = "idna"
 version = "3.11"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -812,15 +854,15 @@ test = ["psleak", "pytest", "pytest-instafail", "pytest-xdist", "setuptools"]
 
 [[package]]
 name = "pycparser"
-version = "2.23"
+version = "3.0"
 description = "C parser in Python"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.10"
 groups = ["main"]
 markers = "implementation_name != \"PyPy\""
 files = [
-    {file = "pycparser-2.23-py3-none-any.whl", hash = "sha256:e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934"},
-    {file = "pycparser-2.23.tar.gz", hash = "sha256:78816d4f24add8f10a06d6f05b4d424ad9e96cfebf68a4ddc99c65c0720d00c2"},
+    {file = "pycparser-3.0-py3-none-any.whl", hash = "sha256:b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992"},
+    {file = "pycparser-3.0.tar.gz", hash = "sha256:600f49d217304a5902ac3c37e1281c9fe94e4d0489de643a9504c5cdfdfc6b29"},
 ]
 
 [[package]]
@@ -901,14 +943,14 @@ files = [
 
 [[package]]
 name = "soupsieve"
-version = "2.8.1"
+version = "2.8.3"
 description = "A modern CSS selector implementation for Beautiful Soup."
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "soupsieve-2.8.1-py3-none-any.whl", hash = "sha256:a11fe2a6f3d76ab3cf2de04eb339c1be5b506a8a47f2ceb6d139803177f85434"},
-    {file = "soupsieve-2.8.1.tar.gz", hash = "sha256:4cf733bc50fa805f5df4b8ef4740fc0e0fa6218cf3006269afd3f9d6d80fd350"},
+    {file = "soupsieve-2.8.3-py3-none-any.whl", hash = "sha256:ed64f2ba4eebeab06cc4962affce381647455978ffc1e36bb79a545b91f45a95"},
+    {file = "soupsieve-2.8.3.tar.gz", hash = "sha256:3267f1eeea4251fb42728b6dfb746edc9acaffc4a45b27e19450b676586e8349"},
 ]
 
 [[package]]
@@ -1067,14 +1109,14 @@ zstd = ["backports-zstd (>=1.0.0) ; python_version < \"3.14\""]
 
 [[package]]
 name = "webtoolkit"
-version = "0.0.184"
+version = "0.0.189"
 description = "Web tools and interfaces for Internet data processing."
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 files = [
-    {file = "webtoolkit-0.0.184-py3-none-any.whl", hash = "sha256:d5c27f3423e9a9ff7df36266b75ab62f72c6d335d03b0c7bc37f7c2f9ceab810"},
-    {file = "webtoolkit-0.0.184.tar.gz", hash = "sha256:5cd15f0e80fca84ee1c631ba774c1f7c1acdb50796983b75b251210b621dc382"},
+    {file = "webtoolkit-0.0.189-py3-none-any.whl", hash = "sha256:23dd747e08e949d9f9801d289bf763e85bcdf82569652adbe1c0f8398dc4de0e"},
+    {file = "webtoolkit-0.0.189.tar.gz", hash = "sha256:d822c0228cc61939968473c3c1e1134c22144210c891a1a9cc3f23d438a05446"},
 ]
 
 [package.dependencies]
@@ -1132,4 +1174,4 @@ test = ["pytest (>=8.1,<9.0)", "pytest-rerunfailures (>=14.0,<15.0)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "90f18b4dfc865d95cc3ba27777a899c42e96cd47b157a3d3abc03bbc502dcd96"
+content-hash = "8bc901bec3264208b070a1b610d2907a11ba8b5f6b0c2c3f51db6325cffbd005"

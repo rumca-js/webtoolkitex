@@ -237,6 +237,7 @@ class TestBaseUrl(unittest.TestCase):
         response, handler, url = self.run_with_base_url(test_url)
 
         properties = url.get_social_properties()
+        self.assertTrue(properties)
         self.assertTrue(len(properties) > 0)
 
     def test_baseurl__social_properties__reddit__post(self):
@@ -245,6 +246,7 @@ class TestBaseUrl(unittest.TestCase):
         response, handler, url = self.run_with_base_url(test_url)
 
         properties = url.get_social_properties()
+        self.assertTrue(properties)
         self.assertTrue(len(properties) > 0)
 
     def test_baseurl__is_allowed(self):

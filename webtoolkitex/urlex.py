@@ -39,19 +39,7 @@ from .handlers import (
 )
 
 from webtoolkitex.utils.dateutils import DateUtils
-
-
-class EntryRules(object):
-    def get_default_request(url):
-        default_request = WebConfig.get_default_request(url)
-
-        location = UrlLocation(url)
-        domain_only = location.get_domain_only()
-        if domain_only.find("youtube.com") >= 0:
-            default_request.crawler_name = "RequestsCrawler"
-            default_request.crawler_type = None
-
-        return default_request
+from webtoolkitex.entryrules import EntryRules
 
 
 class UrlEx(BaseUrl):
@@ -80,13 +68,13 @@ class UrlEx(BaseUrl):
         """
         Returns request for URL
         """
-        return EntryRules.get_default_request(url)
+        return UrlEx.get_default_request(url)
 
     def get_init_request(self):
         """
         Returns initial request. TODO seems redundant
         """
-        request =  EntryRules.get_default_request(url)(self.url)
+        request =  UrlEx.get_default_request(url)(self.url)
         request = self.get_request_for_request(request) 
         return request
 
@@ -102,6 +90,15 @@ class UrlEx(BaseUrl):
             request.crawler_name = default_request.crawler_name
             request.crawler_type = default_request.crawler_type
         return request
+
+    def get_default_request(url):
+        rules = EntryRules()
+        browser = rules.get_browser(url)
+        if not browser:
+            default_request = WebConfig.get_default_request(url)
+        else:
+            default_request = WebConfig.get_request_for_crawler(url, browser)
+        return default_request
 
     def get_handlers(self):
         """

@@ -20,9 +20,10 @@ pytz = "^2024.2"
 psutil="*"
 flask="*"
 url-cleaner="*"
-webtoolkit="^0.0.184"
+webtoolkit="^0.0.189"
 stealth-requests = "^2.0.4"
 curl-cffi = "^0.14.0"
+httpmorph = "*"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.10.0"

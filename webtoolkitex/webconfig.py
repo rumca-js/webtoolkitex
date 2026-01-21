@@ -138,6 +138,17 @@ class WebConfig(object):
             request.crawler_type = crawler_class(url=url)
             return request
 
+    def get_request_for_crawler(url, crawler_name):
+        request = PageRequestObject(url)
+        request.crawler_name = crawler_name
+        crawler_class = WebConfig.get_crawler_from_string(crawler_name)
+        if crawler_class is None:
+            print(f"Could not find crawler for {crawler_name}")
+            request.crawler_name = None
+        else:
+            request.crawler_type = crawler_class(url=url)
+        return request
+
     def use_logger(Logger):
         WebLogger.web_logger = Logger
 
