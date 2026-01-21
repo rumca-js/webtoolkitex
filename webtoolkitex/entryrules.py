@@ -26,6 +26,15 @@ class EntryRules(object):
         {
             "id": 4,
             "enabled": True,
+            "rule_url": ".*reddit\\.com.*\\.rss.*",
+            "rule_name": "reddit",
+            "block": False,
+            "auto_tag": "",
+            "browser": "HttpMorphCrawler"
+        },
+        {
+            "id": 5,
+            "enabled": True,
             "rule_url": ".*youtube\\.com.*",
             "rule_name": "youtube",
             "block": False,
